@@ -3,18 +3,18 @@
 <meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name=apple-mobile-web-app-capable content=yes>
 <meta name=apple-mobile-web-app-status-bar-style content=black>
-<title>phosphorus</title>
+<title class="setTitle"></title>
 <link rel=stylesheet href=app.css>
 <div class=player></div>
 <div class=splash>
 <div>
-  <h1>phosphorus</h1>
+  <h1 class="setTitle"></h1>
   <div class=progress><div class=progress-bar></div></div>
 </div>
 </div>
 <div class=error>
 <div>
-  <h1>phosphorus</h1>
+  <h1 class="setTitle"></h1>
   <p>An error has occurred. <a id=bug-link href=https://github.com/nathan/phosphorus/issues/new>Click here</a> to file a bug report on GitHub.</p>
 </div>
 </div>
@@ -109,6 +109,9 @@
 
   P.IO.loadScratchr2ProjectTitle(projectId, function(title) {
     document.title = projectTitle = title;
+    //esr edit start
+    document.querySelectorAll(".setTitle").forEach(function (ele){ele.innerText=title}.bind(this))
+    //esr edit end
   });
 
 }());
