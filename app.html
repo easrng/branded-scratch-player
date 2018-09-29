@@ -34,7 +34,9 @@
   var projectTitle = '';
   var turbo = false;
   var fullScreen = true;
-  var name = " "
+  var name = " ";
+  var bg="#000";
+  var fg="#fff";
 
   var params = location.search.substr(1).split('&');
   params.forEach(function(p) {
@@ -47,6 +49,12 @@
         case 'name':
           name = decodeURI(parts[1]);
           break;
+        case 'bg':
+          bg = decodeURI(parts[1]);
+          break;
+        case 'fg':
+          fg = decodeURI(parts[1]);
+          break;
         case 'turbo':
           turbo = parts[1] !== 'false';
           break;
@@ -58,6 +66,8 @@
   });
 
   document.querySelectorAll(".setTitle").forEach(function (ele){ele.innerText=name}.bind(this));
+  document.style.color=fg;
+  document.style.background=bg;
   
   var splash = document.querySelector('.splash');
   var progressBar = document.querySelector('.progress-bar');
