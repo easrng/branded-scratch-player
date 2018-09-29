@@ -34,6 +34,7 @@
   var projectTitle = '';
   var turbo = false;
   var fullScreen = true;
+  var name = " "
 
   var params = location.search.substr(1).split('&');
   params.forEach(function(p) {
@@ -42,6 +43,9 @@
       switch (parts[0]) {
         case 'id':
           projectId = Number(parts[1]);
+          break;
+        case 'name':
+          name = decodeuri(parts[1]);
           break;
         case 'turbo':
           turbo = parts[1] !== 'false';
@@ -53,6 +57,8 @@
     }
   });
 
+  document.querySelectorAll(".setTitle").forEach(function (ele){ele.innerText=name}.bind(this));
+  
   var splash = document.querySelector('.splash');
   var progressBar = document.querySelector('.progress-bar');
   var error = document.querySelector('.error');
@@ -109,9 +115,6 @@
 
   P.IO.loadScratchr2ProjectTitle(projectId, function(title) {
     document.title = projectTitle = title;
-    //esr edit start
-    document.querySelectorAll(".setTitle").forEach(function (ele){ele.innerText=title}.bind(this))
-    //esr edit end
   });
 
 }());
