@@ -45,7 +45,7 @@
           projectId = Number(parts[1]);
           break;
         case 'name':
-          name = decodeuri(parts[1]);
+          name = decodeURI(parts[1]);
           break;
         case 'turbo':
           turbo = parts[1] !== 'false';
